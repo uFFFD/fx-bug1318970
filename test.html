@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>bug 1318970 content prefs test</title>
+<script type="text/javascript">
+function onload() {
+  var a = document.querySelector("#self");
+  var loc = document.location.href.split("/").pop();
+  a.href = loc;
+  a.text = "downoad " + loc;
+  a.setAttribute("download", loc);
+}
+</script>
+</head>
+<body onload="onload()">
+<p>browser.upload.lastDir:</p>
+<input type="file">
+<hr>
+<p>browser.download.lastDir:</p>
+<ul>
+<li><a href="data:application/octet-stream,hello%20world" download="hello.txt">download hello.txt</a></li>
+<li><a id="self"></a></li>
+</ul>
+<hr>
+</body>
+</html>
